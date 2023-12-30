@@ -27,6 +27,6 @@ fetch(`https://pokeapi.co/api/v2/pokemon?limit=${MAX_POKEMON}`)
  * 
  * at the next .then it will handle the result from above, such that
  * data is the JSON object obtained from the the most recent .then
- * and data.results contains the actualy data of interest which is the 
+ * and data.results contains the actual data of interest which is the 
  * list of pokemon 
  */
