@@ -161,4 +161,76 @@ function displayPokemons(pokemon) {
   });
 }
 
-searchInput.addEventListener("keyup", handleSearch)
+
+
+/**
+ * funciton is designed to handle a search for a specific pokemon
+ * via their name or number ID (ie: one can search b and all pokemon
+ * that start with b will appear or one can search 1 and all pokemon
+ * that have a 1 at the beginning of their number ID will appear)
+ * 
+ * from the input in the search bar will be placed into searchTerm 
+ * and this value will be converted to lowercase to ensure that this 
+ * search operation is case-insensitive
+ * 
+ * filteredPokemons variable delcared in order to store an array of 
+ * pokemon that matches the search criteria
+ * 
+ * now if numberFilter is checked this means that the user wants to 
+ * search my pokemon number ID (ie, 1 = bulbasuar) such that the function
+ * filters pokemon by their ID, through the help of the built in filter
+ * method which is used to create a new array of pokemon whose IDs 
+ * start with the searchTerm, the ID is extracted from the pokemons url
+ * property and if nameFilter is checked instead of number, then the 
+ * filter method will create a new array that checks if the pokemons 
+ * name starts with the searchTerm, however if none of the filters are
+ * checked then the default is to set filteredPokemons to the entire list
+ * of pokemons
+ * 
+ * then the function will display the filtered pokemons with the use of
+ * the displayPokemons function that takes in the filtered pokemons
+ * 
+ * lastly when no pokemon match the search criteria the function will
+ * change the style of notFoundMessage to block so that it displays a
+ * message and if there are match pokemon the notFoundMessage will 
+ * be hidden
+ */
+function handleSearch(){
+  const searchTerm = searchInput.value.toLowerCase();
+  let filteredPokemons;
+  if(numberFilter.checked){
+    filteredPokemons = allPokemons.filter((pokemon) => {
+      const pokemonID = pokemon.url.split("/")[6];
+      return pokemonID.startsWith(searchTerm);
+    });
+  } else if (nameFilter.checked) {
+    filteredPokemons = allPokemons.filter((pokemon) => 
+      pokemon.name.toLowerCase().startsWith(searchTerm)
+    );
+  } else {
+    filteredPokemons = allPokemons;
+  }
+  displayPokemons(filteredPokemons);
+  if(filteredPokemons.length === 0){
+    notFoundMessage.style.display = "block";
+  } else {
+    notFoundMessage.style.display = "none";
+  }
+}
+/*
+* makes the web page responsive to user input in the search field, 
+* triggering the search and filtering logic in real-time as the 
+* user types.
+*/
+searchInput.addEventListener("keyup", handleSearch);
+
+/**
+ * to clear the search field and the display pokemon back to default
+ */
+const closeButton = document.querySelector(".search-close-icon");
+closeButton.addEventListener("click", clearSearch);
+function clearSearch(){
+  searchInput.value = "";
+  displayPokemons(allPokemons);
+  notFoundMessage.style.display = "none";
+}
