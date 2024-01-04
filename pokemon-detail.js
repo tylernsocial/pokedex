@@ -364,7 +364,7 @@ function displayPokemonDetails(pokemon) {
  * it
  */
 document.addEventListener("DOMContentLoaded", () => {
-  const MAX_POKEMONS = 151;
+  const MAX_POKEMONS = 493;
   const pokemonID = new URLSearchParams(window.location.search).get("id");
   const id = parseInt(pokemonID, 10);
   if (id < 1 || id > MAX_POKEMONS) {
