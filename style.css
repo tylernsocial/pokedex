@@ -245,6 +245,11 @@
     width: calc(100% - 1rem);
     max-height: 100px;
     overflow-y: auto;
+    -ms-overflow-style: none;  
+  scrollbar-width: none;
+  }
+  .pokemon-list::-webkit-scrollbar{
+    display: none;
   }
   
   .list-wrapper {
