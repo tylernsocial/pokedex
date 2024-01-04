@@ -280,7 +280,7 @@ function displayPokemonDetails(pokemon) {
     ".pokemon-id-wrap .body2-fonts"
   ).textContent = `#${String(id).padStart(3, "0")}`;
   const imageElement = document.querySelector(".detail-img-wrapper img");
-  imageElement.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${id}.svg`;
+  imageElement.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${id}.png`;
   imageElement.alt = name;
   const typeWrapper = document.querySelector(".power-wrapper");
   typeWrapper.innerHTML = "";
