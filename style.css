@@ -270,6 +270,23 @@
     text-align: center;
     text-decoration: none;
     cursor: pointer;
+
+  }
+  .list-item:hover {
+    filter: drop-shadow(2px 15px 12px var(--identity-primary));
+    animation: float2 1s ease-in-out infinite;
+  }
+  
+  @keyframes float2 {
+    0% {
+      transform: translatey(0px);
+    }
+    50% {
+      transform: translatey(-10px);
+    }
+    100% {
+      transform: translatey(0px);
+    }
   }
   
   .list-item .number-wrap {
